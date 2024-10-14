@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to bottom, #f0e5d8, #f9d3b4);
+    font-family: "微軟正黑體", Arial, sans-serif;
+    margin: 0; /* 確保沒有額外的邊距 */
+    height: 100vh; /* 讓 body 佔滿全高 */
+}
+
+h1 {
+    color: #8c5e3c;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #3b2c2c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-board {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center; /* 使卡片居中 */
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid #f7e1c7;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.front, .back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+button, select {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffcc70;
+    color: #4a4a4a;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e6b55c;
+}
+
+select {
+    cursor: pointer;
+}
+
+/*************************************/
+.whistle-animation {
+    position: fixed; /* 使圖片固定在螢幕上 */
+    top: 0; /* 從螢幕頂部開始 */
+    left: 0; /* 從螢幕左側開始 */
+    height: 100vh; /* 設置高度為螢幕高度 */
+    width: 100vw; /* 設置寬度為螢幕寬度 */
+    opacity: 0; /* 初始透明度 */
+    transition: opacity 1s ease; /* 透明度過渡效果 */
+    z-index: 1000; /* 確保圖片在最上層 */
+}
+
+@keyframes moveWhistle {
+    0% {
+        right: -200px;
+        opacity: 1;
+    }
+    50% {
+        right: 50%; /* 移動到畫面中央 */
+    }
+    100% {
+        right: -200px; /* 移回畫面右側 */
+        opacity: 0; /* 淡出 */
+    }
+}
+/*************************************/
